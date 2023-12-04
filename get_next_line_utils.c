@@ -6,7 +6,7 @@
 /*   By: uwubuntu <uwubuntu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 01:12:44 by uwubuntu          #+#    #+#             */
-/*   Updated: 2023/12/04 18:56:04 by uwubuntu         ###   ########.fr       */
+/*   Updated: 2023/12/04 20:02:39 by uwubuntu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,31 +61,6 @@ char	*ft_strjoin(char *s1, char *s2)
 		new[i++] = s2[j++];
 	new[i] = '\0';
 	return (new);
-}
-
-void	*ft_memmove(void *dst, const void *src, size_t len)
-{
-	size_t	i;
-	char	*d_ptr;
-	char	*s_ptr;
-
-	i = 0;
-	d_ptr = (unsigned char *)dst;
-	s_ptr = (unsigned char *)src;
-	if (dst > src)
-	{
-		while (len--)
-			d_ptr[len] = s_ptr[len];
-	}
-	else
-	{
-		while (i < len)
-		{
-			d_ptr[i] = s_ptr[i];
-			i++;
-		}
-	}
-	return (dst);
 }
 
 size_t	get_line_len(char *buffer)
