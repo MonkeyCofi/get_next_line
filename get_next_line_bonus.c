@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: pipolint <pipolint@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/02 18:44:06 by uwubuntu          #+#    #+#             */
-/*   Updated: 2023/12/06 20:45:34 by pipolint         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "get_next_line.h"
 
 char	*join_newbuf(char *old_buf, char *curr_buf)
@@ -106,17 +94,17 @@ char	*populate_buffer(int fd, char *buffer)
 
 char	*get_next_line(int fd)
 {
-	static char	*buffer;
+	static char	*buffer[OPEN_MAX];
 	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || (size_t)BUFFER_SIZE >= 2147483647)
 	{
 		return (NULL);
 	}
-	buffer = populate_buffer(fd, buffer);
-	if (!buffer)
+	buffer[fd] = populate_buffer(fd, buffer[fd]);
+	if (!buffer[fd])
 		return (NULL);
-	line = line_fetch(buffer);
-	buffer = update_buf(buffer);
+	line = line_fetch(buffer[fd]);
+	buffer[fd] = update_buf(buffer[fd]);
 	return (line);
 }

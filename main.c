@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: uwubuntu <uwubuntu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pipolint <pipolint@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 19:34:19 by uwubuntu          #+#    #+#             */
-/*   Updated: 2023/10/29 14:43:35 by uwubuntu         ###   ########.fr       */
+/*   Updated: 2023/12/06 20:14:38 by pipolint         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ int main(int argc, char **argv)
 		return (1);
 	}
 	int fd = open(argv[1], O_RDONLY);
-	char	*bf;
-	get_next_line(fd, &bf);
-	// printf("%s", bf);
+	char *str;
+	while ((str = get_next_line(fd)))
+		printf("%s", str), free(str);
 }
 
